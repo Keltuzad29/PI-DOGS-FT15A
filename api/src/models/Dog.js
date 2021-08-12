@@ -32,19 +32,23 @@ module.exports = (sequelize) => {
     },
     life_time:{
       type:DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
-    createInDB:{
+    createInDb:{
       type:DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
     },
-    url_Image: {
+    img: {
       type:DataTypes.STRING,
       allowNull: true,
-      defaultValue: "https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-    },
-  },
+      defaultValue: "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"
+     },
+    temperament: {
+      type:DataTypes.STRING,
+      allowNull: false
+   } 
+},
   {
     timestamps:false,
     // timestamps: true,
