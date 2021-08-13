@@ -25,6 +25,7 @@ export function getNameDogs(name){
                 payload: dogsByName.data
             })
         }catch(error){
+            alert("El Nombre ingresado no existe en la base de datos, prueba otro o agrega uno nuevo")
             console.log(error)
         }
 
@@ -36,7 +37,7 @@ export function getTemperaments(){
         var temp = await axios.get("http://localhost:3001/temperaments", {
 
         });
-        return dispatch ({type: "DOG_TEMPERAMENTS", payload: temp.data});
+        return dispatch ({type: "GET_TEMPERAMENTS", payload: temp.data});
     }
 }
 
@@ -56,6 +57,7 @@ export function filterCreated(payload) {
 }
 
 export function postDogs(payload) {
+    console.log(payload)
     return async function (dispatch){
         const response = await axios.post("http://localhost:3001/dogs", payload);
         console.log(response);

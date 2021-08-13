@@ -15,8 +15,12 @@ export default function SearchBar(){
 
     function handleSubmit(e){
         e.preventDefault();
+        if(name !== ""){
         dispatch(getNameDogs(name));
-        setName("");
+        setName("");}
+        else{
+        alert("Ingresa un nombre para buscar")
+        }
     }
 
     return (

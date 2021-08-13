@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
     },
     height_imperial:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     weight_metric:{
       type:DataTypes.STRING,
@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
     },
     weight_imperial:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     life_time:{
       type:DataTypes.STRING,
@@ -44,10 +44,7 @@ module.exports = (sequelize) => {
       allowNull: true,
       defaultValue: "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"
      },
-    temperament: {
-      type:DataTypes.STRING,
-      allowNull: false
-   } 
+    
 },
   {
     timestamps:false,

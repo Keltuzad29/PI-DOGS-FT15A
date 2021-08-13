@@ -52,7 +52,7 @@ function rootReducer(state = initialState, action) {
         ...state
       };
 
-    case "DOG_TEMPERAMENTS":
+    case "GET_TEMPERAMENTS":
       return{
         ...state,
         temperaments: action.payload

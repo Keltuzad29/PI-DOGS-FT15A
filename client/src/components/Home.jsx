@@ -99,7 +99,7 @@ export default function Home(){
                 />
                 {currentDogs?.map( el =>{
                return (
-               <DogCard img={el.img} name={el.name} temperament={el.temperament} key={el.id}/>
+               <DogCard img={el.img} name={el.name} temperaments={el.temperament} key={el.id}/>
                     )
                 })}
             </div>

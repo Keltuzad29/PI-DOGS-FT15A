@@ -2,7 +2,19 @@ import React, { useState, useEffect } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { postDogs, getTemperaments } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+import './DogCreate.css';
 
+
+
+function validate(input){
+    let errors = {};
+    if (!input.username) {
+        errors.username = 'Se requiere un Nombre para el Perrito';
+      } 
+    if (!input.weight_max){
+        errors.username = 'Se requiere un Nombre para el Perrito';
+    }
+}
 
 
 export default function DogCreate(){
@@ -12,18 +24,17 @@ export default function DogCreate(){
 
     const[input, setInput] = useState({
         name: "",
-        height_min: "",
-        height_max: "",
-        weigth_min: "",
-        weigth_max: "",
-        life_time_min: "",
-        life_time_max: "",
+        height_metric: "",
+        weight_metric: "",
+        life_time: "",
         temperaments:[],
-        imagen:"",
+        img:"",
     })
 
+   
     function handleChange(e){
-        setInput({
+       
+                setInput({
             ...input,
             [e.target.name] : e.target.value
         })
@@ -59,20 +70,19 @@ export default function DogCreate(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(input)
-        dispatch(postDogs(input))
+        if(input.name !== "" && input.height_max !== "" && input.height_min !== "" && input.weight_max !== ""
+         && input.weight_min !== "" && input.life_time_min !== "" && input.life_time_max !== "" && input.temperaments !== [] )
+         
+        {dispatch(postDogs(input))
         alert("Tu Perrito ha sido Creado con Exito!!!")
         setInput({
-            name: "",
-            height_min: "",
-            height_max: "",
-            weigth_min: "",
-            weigth_max: "",
-            life_time_min: "",
-            life_time_max: "",
-            temperaments:[],
-            imagen:"",
+            name: "", height_metric: "", height_max: "", height_min: "", weight_max: "", weight_min: "", weight_metric: "", 
+            life_time_min: "", life_time_max: "", life_time: "", temperaments:[], imagen:"",
         })
-        history.push('/home')
+        history.push('/home')}
+        else{
+        alert("Debe completar Todos los campos primero")
+    }
     }
 
     useEffect(() => {
@@ -87,59 +97,45 @@ export default function DogCreate(){
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div>
                     <label htmlFor="name">Nombre</label>
-                    <input type="text" value={input.name} name='name' onChange={handleChange}/>
+                    <input type="text" value={input.name} name='name' id='name' placeholder="Ingresa el Nombre!" onInput={(e)=>handleChange(e)}/>
+                </div>
+                
+                <div>
+                    
+                    <label htmlFor="height_metric">Tamaño </label>
+                    <input type="text" value={input.height_metric} name='height_metric' id='height_metric'  placeholder="Min - Max" onChange={(e)=>handleChange(e)}/>                   
+                    Cms
                 </div>
                 <div>
-                    <div>
-                    <label htmlFor="height_min">Tamaño Minimo</label>
-                    <input type="text" value={input.height_min} name='height_min' onChange={handleChange}/>
-                    </div>
-                    <div>
-                    <label htmlFor="height_max">Tamaño Maximo</label>
-                    <input type="text" value={input.height_max} name='height_max' onChange={handleChange}/>
-                    </div>
+                    <label htmlFor="weight_metric">Peso </label>
+                     <input type="text" value={input.weight_metric} name='weight_metric' id='weight_metric' placeholder="Min - Max"  onChange={(e)=>handleChange(e)}/>
+                     Kgs
                 </div>
                 <div>
-                    <div>
-                    <label htmlFor="weight_min">Peso Maximo</label>
-                    <input type="text" value={input.weight_min} name='weight_min' onChange={handleChange}/>
-                    </div>
-                    <div>
-                    <label htmlFor="weight_max">Peso Minimo</label>
-                    <input type="text" value={input.weight_max} name='weight_max' onChange={handleChange}/>
-                    </div>
-                </div>
+                    <label htmlFor="life_time">Tiempo de Vida </label>
+                    <input type="text" value={input.life_time} name='life_time' id='life_time' placeholder="Min - Max"  onChange={(e)=>handleChange(e)}/>
+                    Años
+                  </div>
                 <div>
-                    <div>
-                    <label htmlFor="life_time_min">Tiempo de Vida Minimo</label>
-                    <input type="text" value={input.life_time_min} name='life_time_min' onChange={handleChange}/>
-                    </div>
-                    <div>
-                    <label htmlFor="life_time_max">Tiempo de Vida Maximo</label>
-                    <input type="text" value={input.life_time_max} name='life_time_max' onChange={handleChange}/>
-                    </div>
+                <label htmlFor="temperaments">Temperaments:</label>
+                <input type="text" value={input.temperaments} name='temperaments' id="temperaments" onChange={(e)=>handleChange(e)}/>
                 </div>
+
                 <div>
-                    <label htmlFor="temperamentos">Temperamentos</label>
-                    <input type="text" value={input.temperaments} name='temperamentos' onChange={handleChange}/>
-            
-                </div>
-                <div>
-                    <label htmlFor="imagen">Imagen:</label>
-                    <input type="text" value={input.image} name='imagen' onChange={handleChange}/>
+                    <label htmlFor="img">Imagen:</label>
+                    <input type="text" value={input.img} name='img' onChange={(e)=>handleChange(e)}/>
                 </div>
                 <select onChange={(e)=> handleSelect(e)}>
                     {temperaments.map((temp)=>(
                         <option value={temp.name} key={temp.id}>{temp.name}</option>
                     ))}
                 </select>
-                <ul><li>{input.temperaments.map(el=> el + '  ')}</li></ul>
+                <ul><li>{input.temperaments.map(el=> <button type='button' key={el.id}>{el}</button>)}</li></ul>
                 <div>
                     <button type='button' onClick={handleClear}>Limpiar Temperamentos</button>
                     <button type='submit'>Crear Nuevo Perrito</button>
                 </div>
             </form>
-
         </div>
     )
 }

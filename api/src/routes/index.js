@@ -36,7 +36,7 @@ const getApiInfo = async () => {
       //      temperaments: e.temperament && e.temperament.split(", ")
     };
   });
-  console.log("informacion de la api",apiInfo)
+//  console.log("informacion de la api",apiInfo)
   return apiInfo;
 };
 
@@ -90,6 +90,7 @@ router.get("/temperaments", async (req, res) => {
 
     //   (e) => e.temperament && e.temperament.split(", ")
   });
+  
   const sinEspacios = temperaments.map((e) => e && e.split(", ")).flat(); // intera en los array y devuelve un solo array con todos los elementos
   //   console.log(sinEspacios.length)
 
