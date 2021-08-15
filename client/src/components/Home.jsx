@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 import DogCard from "./DogCard";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import s from "./Home.module.css"
 
 export default function Home(){
 
@@ -52,6 +53,7 @@ export default function Home(){
         dispatch(orderByName(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
+      
     }
 
     function handleSortWeight(e){
@@ -63,15 +65,16 @@ export default function Home(){
 
     return (
         <div>
-            <Link to= '/dogs'>Crear Personaje</Link>
-            <h1>MUNDO PERRUNO</h1>
-            <button onClick={e=> {handleClick(e)}}>
+            <Link to= '/dogs'><button>Crear Personaje</button></Link>
+            <h1 className={s.title}>MUNDO PERRUNO</h1>
+            <button className={s.boton} onClick={e=> {handleClick(e)}}>
                 Volver a Cargar Todos los Perros
             </button>
             <div>
-                <select onChange={e=> handleSort(e)}>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>   
+                <div>
+                <select className={s.content} onChange={e=> handleSort(e)}>
+                    <option value='asc'>Ascendente ↑</option>
+                    <option value='desc'>Descendente ↓</option>   
                 </select>
 
                 <select onChange={e=> handleSortWeight(e)}>
@@ -90,18 +93,19 @@ export default function Home(){
                     <option value='created'>Creados</option>
                     <option value='api'>Existente</option>
                 </select>
-
+                </div>
                 <SearchBar/>
                 <Paginado
                 dogsPerPage= {dogsPerPage}
                 allDogs= {allDogs.length}
                 paginado= {paginado}
                 />
-                {currentDogs?.map( el =>{
+               <ul className={s.dogsGrid}> {currentDogs?.map( el =>{
                return (
-               <DogCard img={el.img} name={el.name} temperaments={el.temperament} key={el.id}/>
+               <DogCard img={el.img ? el.img : "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"} name={el.name} temperaments={el.temperament} key={el.id}/>
                     )
                 })}
+                </ul>
             </div>
         </div>
     )

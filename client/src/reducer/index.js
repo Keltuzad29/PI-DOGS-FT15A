@@ -31,7 +31,7 @@ function rootReducer(state = initialState, action) {
           : allDogs.filter(
               (el) =>
                 el.temperament &&
-                el.temperament.find((e) => e === action.payload)
+                el.temperament.split(", ").find((e) => e === action.payload)
             );
       //console.log("filtro temperamentos",allDogs)
       return {
@@ -60,7 +60,7 @@ function rootReducer(state = initialState, action) {
 
     case "ORDER_BY_NAME":
         let sortedArr = action.payload === 'asc' ? 
-        state.dogs.sort(function (a, b){
+        state.allDogs.sort(function (a, b){
             if (a.name > b.name){
                 return 1;
             }
@@ -69,7 +69,7 @@ function rootReducer(state = initialState, action) {
             }
             return 0;
         }) :
-        state.dogs.sort(function(a, b){
+        state.allDogs.sort(function(a, b){
             if (a.name > b.name){
                 return -1;
             }
@@ -82,22 +82,29 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: sortedArr
         };
+        
         case "ORDER_BY_WEIGHT":
-            let sortedArrWeight = action.payload === 'weightasd' ? 
+                
+        let sortedArrWeight = action.payload === 'weightdesc' ? 
             state.dogs.sort(function (a, b){
-                if (a.weight_metric > b.weight_metric){
+              let num1 = a.weight_imperial.split(" - ");
+              let num2 = b.weight_imperial.split(" - ");
+              console.log("num1  " , num1, " num2 ", num2)
+              if (num1[1] && num2[1] && num1[1] > num2[1]){
                     return 1;
                 }
-                if (b.weight_metric > a.weight_metric){
+                if (num1[1] && num2[1] && num2[1] > num1[1]){
                     return -1;
                 }
                 return 0;
             }) :
             state.dogs.sort(function(a, b){
-                if (a.weight_metric > b.weight_metric){
+              let num1 = a.weight_imperial.split(" - ");
+              let num2 = b.weight_imperial.split(" - ");
+                if (num1[1] && num2[1] && num1[1] > num2[1]){
                     return -1;
                 }
-                if (b.weight_metric > a.weight_metric){
+                if (num1[1] && num2[1] && num2[1] > num1[1]){
                     return 1;
                 }
                 return 0;

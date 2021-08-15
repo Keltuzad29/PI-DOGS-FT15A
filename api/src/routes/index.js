@@ -30,7 +30,7 @@ const getApiInfo = async () => {
       height_imperial: e.height.imperial,
       weight_metric: e.weight.metric,
       weight_imperial: e.weight.imperial,
-      temperament: e.temperament && e.temperament.split(", "),
+      temperament: e.temperament && e.temperament,
       life_time: e.life_span,
       img: e.image.url,
       //      temperaments: e.temperament && e.temperament.split(", ")
@@ -106,7 +106,7 @@ router.get("/temperaments", async (req, res) => {
   });
 
   const allTemperaments = await Temperament.findAll();
-  //console.log("Todos los Temperamentos", allTemperaments.length)
+  console.log("Todos los Temperamentos", allTemperaments.length)
   return res.send(allTemperaments);
 });
 

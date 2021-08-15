@@ -1,0 +1,35 @@
+.dogsGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 60px;
+    padding: 20px;
+    justify-content: center;
+}
+
+@media (max-width: 560px){
+    .dogsGrid {  grid-template-columns: 100%;
+      }
+  }
+
+.title{
+    text-align: center;
+text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 20px #e60073, 0 0 30px #e60073,
+0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073;
+font-size: 3rem;}
+
+
+.boton{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 2px solid #8d7248;
+  }
+
+  .boton:hover{
+    color: #3c3d15bb;
+    background-color: #f5e2a4;}
+  

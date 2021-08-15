@@ -1,0 +1,29 @@
+.paginado{
+display: flex;
+justify-content: center;
+align-items: center;     
+flex-grow: initial ;
+
+}
+
+.number{
+   
+    list-style:none;
+    display: flex;
+    flex-grow: initial ; 
+    font-size: 1.5rem;
+   
+
+}
+
+.img{
+    align-items: center;
+    background:burlywood;
+    background-image: url('../huellita.jpg');
+    background-size: 35px 35px;
+    margin: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+
+}

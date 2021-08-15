@@ -16,19 +16,19 @@ module.exports = (sequelize) => {
     },
     height_metric:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     height_imperial:{
       type:DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     weight_metric:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     weight_imperial:{
       type:DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     life_time:{
       type:DataTypes.STRING,
