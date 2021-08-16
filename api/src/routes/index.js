@@ -26,12 +26,13 @@ const getApiInfo = async () => {
     return {
       name: e.name,
       id: e.id,
-      height_metric: e.height.metric,
-      height_imperial: e.height.imperial,
-      weight_metric: e.weight.metric,
-      weight_imperial: e.weight.imperial,
+      height_max: e.height.metric.split(" - ")[1] && e.height.metric.split(" - ")[1],
+      height_min: e.height.metric.split(" - ")[0] && e.height.metric.split(" - ")[0],
+      weight_max: e.weight.metric.split(" - ")[1] && e.weight.metric.split(" - ")[1], 
+      weight_min: e.weight.metric.split(" - ")[0] && e.weight.metric.split(" - ")[0],
+      life_time_max: e.life_span.split(" - ")[1] && e.life_span.split(" - ")[1].split(" ")[0],
+      life_time_min: e.life_span.split(" - ")[0] && e.life_span.split(" - ")[0],
       temperament: e.temperament && e.temperament,
-      life_time: e.life_span,
       img: e.image.url,
       //      temperaments: e.temperament && e.temperament.split(", ")
     };
@@ -113,23 +114,25 @@ router.get("/temperaments", async (req, res) => {
 router.post("/dogs", async (req, res) => {
   const {
     name,
-    height_metric,
-    weight_metric,
-    height_imperial,
-    weight_imperial,
+    height_max,
+    height_min,
+    weight_max,
+    weight_min,
+    life_time_max,
+    life_time_min,
     temperament,
-    life_time,
     img,
     createInDb,
   } = req.body;
 
   let dogCreated = await Dog.create({
     name,
-    height_metric,
-    weight_metric,
-    height_imperial,
-    weight_imperial,
-    life_time,
+    height_max,
+    height_min,
+    weight_max,
+    weight_min,
+    life_time_max,
+    life_time_min,
     img,
     createInDb,
   });

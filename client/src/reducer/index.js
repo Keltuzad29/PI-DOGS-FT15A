@@ -85,26 +85,25 @@ function rootReducer(state = initialState, action) {
         
         case "ORDER_BY_WEIGHT":
                 
-        let sortedArrWeight = action.payload === 'weightdesc' ? 
+        let sortedArrWeight = action.payload === 'weightasc' ? 
             state.dogs.sort(function (a, b){
-              let num1 = a.weight_imperial.split(" - ");
-              let num2 = b.weight_imperial.split(" - ");
-              console.log("num1  " , num1, " num2 ", num2)
-              if (num1[1] && num2[1] && num1[1] > num2[1]){
+              // let num1 = a.weight_metric.split(" - ");
+              // let num2 = b.weight_metric.split(" - ");
+                if (a.weight_min > b.weight_min){
                     return 1;
                 }
-                if (num1[1] && num2[1] && num2[1] > num1[1]){
+                if (b.weight_min > a.weight_min){
                     return -1;
                 }
                 return 0;
             }) :
             state.dogs.sort(function(a, b){
-              let num1 = a.weight_imperial.split(" - ");
-              let num2 = b.weight_imperial.split(" - ");
-                if (num1[1] && num2[1] && num1[1] > num2[1]){
+              // let num1 = a.weight_metric.split(" - ");
+              // let num2 = b.weight_metric.split(" - ");
+                if (a.weight_min > b.weight_min){
                     return -1;
                 }
-                if (num1[1] && num2[1] && num2[1] > num1[1]){
+                if (b.weight_min > a.weight_min){
                     return 1;
                 }
                 return 0;

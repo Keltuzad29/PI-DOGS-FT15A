@@ -4,13 +4,12 @@ import { useState, useEffect } from "react";
 //importo los hooks de react-redux (previamente se instala npm i react-redux)
 import { useDispatch, useSelector } from "react-redux";
 //importo las actions que me interesa usar en este componente
-import { getDogs, filterDogsByTemperaments, filterCreated, orderByName, orderByWeight, getTemperaments} from "../actions";
-import {Link} from 'react-router-dom';
+import { getDogs, orderByName, orderByWeight, getTemperaments} from "../actions";
 //importo los componentes que voy a usar
 import DogCard from "./DogCard";
 import Paginado from "./Paginado";
-import SearchBar from "./SearchBar";
 import s from "./Home.module.css"
+import NavBar from "./NavBar";
 
 export default function Home(){
 
@@ -35,18 +34,7 @@ export default function Home(){
     }, [])
 
 
-    function handleClick(e){
-        e.preventDefault();
-        dispatch(getDogs());
-    }
-    
-    function handleFilterTemperament(e){   
-        dispatch(filterDogsByTemperaments(e.target.value))
-    }
-    
-    function handleFilterCreated(e){
-        dispatch(filterCreated(e.target.value))
-    }
+
 
     function handleSort(e){
         e.preventDefault();
@@ -65,36 +53,18 @@ export default function Home(){
 
     return (
         <div>
-            <Link to= '/dogs'><button>Crear Personaje</button></Link>
-            <h1 className={s.title}>MUNDO PERRUNO</h1>
-            <button className={s.boton} onClick={e=> {handleClick(e)}}>
-                Volver a Cargar Todos los Perros
-            </button>
-            <div>
-                <div>
-                <select className={s.content} onChange={e=> handleSort(e)}>
+            <NavBar />   
+            <div className={s.inputs}>      
+                <select className={s.select} onChange={e=> handleSort(e)}>
                     <option value='asc'>Ascendente ↑</option>
                     <option value='desc'>Descendente ↓</option>   
                 </select>
 
-                <select onChange={e=> handleSortWeight(e)}>
-                    <option value='weightasd'>Weight ↑</option>
-                    <option value='weightdesc'>Weight ↓</option>   
+                <select className={s.select} onChange={e=> handleSortWeight(e)}>
+                    <option value='weightasc'>Peso ↑</option>
+                    <option value='weightdesc'>Peso ↓</option>   
                 </select>
-            
-                <select onChange={e=> handleFilterTemperament(e)}>
-                    {temperaments.map((temp)=>(
-                        <option value={temp.name}  key={temp.id}>{temp.name}</option>
-                    ))}
-                </select>
-
-                <select onChange={e=> handleFilterCreated(e)}>
-                    <option value='All'>All</option>
-                    <option value='created'>Creados</option>
-                    <option value='api'>Existente</option>
-                </select>
-                </div>
-                <SearchBar/>
+            </div>
                 <Paginado
                 dogsPerPage= {dogsPerPage}
                 allDogs= {allDogs.length}
@@ -106,7 +76,8 @@ export default function Home(){
                     )
                 })}
                 </ul>
-            </div>
+            
         </div>
     )
 }
+//temperaments={el.temperament ? el.temperament : el.Temperaments.map(e=>e.name + ", ")
