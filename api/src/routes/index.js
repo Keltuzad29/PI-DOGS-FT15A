@@ -107,7 +107,7 @@ router.get("/temperaments", async (req, res) => {
   });
 
   const allTemperaments = await Temperament.findAll();
-  console.log("Todos los Temperamentos", allTemperaments.length)
+  //console.log("Todos los Temperamentos", allTemperaments.length)
   return res.send(allTemperaments);
 });
 
@@ -148,7 +148,7 @@ router.get("/dogs/:id", async (req, res) => {
   const { id } = req.params;
   const allDog = await getAllDogs();
   if (id) {
-    let dogId = await allDog.filter((el) => el.id == id);
+    let dogId = await allDog.filter((el) => el.id.toString() === id.toString());
     dogId.length
       ? res.status(200).json(dogId)
       : res.status(404).send("Lo siento, no se encontro el Perrito");

@@ -8,16 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-p.danger {
-  color: red;
-  font-size: 10px;
-}
 
-input.danger {
-  border: 2px solid red;
-}
