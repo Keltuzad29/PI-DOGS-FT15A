@@ -11,7 +11,7 @@ import {
   getTemperaments,
 } from "../actions";
 
-import s from "./NavBar.module.css";
+import s from "../styles/NavBar.module.css";
 import SearchBar from "./SearchBar";
 
 export default function NavBar() {

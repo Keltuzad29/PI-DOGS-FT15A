@@ -1,6 +1,7 @@
 const { Router } = require("express");
+
 const axios = require("axios");
-const { Dog, Temperament } = require("../db");
+const { Dog, Temperament, Op } = require("../db");
 const { API_KEY } = process.env;
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -29,11 +30,13 @@ const getApiInfo = async () => {
       height_max: e.height.metric.split(" - ")[1] && e.height.metric.split(" - ")[1],
       height_min: e.height.metric.split(" - ")[0] && e.height.metric.split(" - ")[0],
       weight_max: e.weight.metric.split(" - ")[1] && e.weight.metric.split(" - ")[1], 
-      weight_min: e.weight.metric.split(" - ")[0] && e.weight.metric.split(" - ")[0],
+      weight_min: e.weight.metric.split(" - ")[0] !== "NaN"
+      ? e.weight.metric.split(" - ")[0] : 6,
       life_time_max: e.life_span.split(" - ")[1] && e.life_span.split(" - ")[1].split(" ")[0],
       life_time_min: e.life_span.split(" - ")[0] && e.life_span.split(" - ")[0],
-      temperament: e.temperament && e.temperament,
+      temperament: e.temperament ? e.temperament : "🐶 Perrito sin Temperamentos 😭",
       img: e.image.url,
+      origin: e.origin,
       //      temperaments: e.temperament && e.temperament.split(", ")
     };
   });
@@ -153,6 +156,14 @@ router.get("/dogs/:id", async (req, res) => {
       ? res.status(200).json(dogId)
       : res.status(404).send("Lo siento, no se encontro el Perrito");
   }
+});
+
+router.delete("/dogs/:name", async (req, res)=>{
+  const {name} = req.params;
+  const dog = await Dog.destroy({
+    where: {name:{[Op.like]: `%${name}%`}}
+  });
+  res.json(dog);
 });
 
 module.exports = router;

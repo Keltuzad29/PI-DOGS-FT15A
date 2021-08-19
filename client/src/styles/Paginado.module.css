@@ -5,10 +5,12 @@ align-items: center;
 flex-grow: initial ; */
 display: grid;
     grid-template-columns: repeat(auto-fill, 50px);
-    gap: 10px;
+    gap: 5px;
     padding: 20px;
     justify-content: center;
-    cursor: default;
+   
+    margin:auto;
+    cursor:url('../cursor_perrito_.png'), auto;
 }
 
 

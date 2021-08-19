@@ -8,7 +8,7 @@ import { getDogs, orderByName, orderByWeight, getTemperaments} from "../actions"
 //importo los componentes que voy a usar
 import DogCard from "./DogCard";
 import Paginado from "./Paginado";
-import s from "./Home.module.css"
+import s from "../styles/Home.module.css"
 import NavBar from "./NavBar";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export default function Home(){
     const indexOfFirstDog = indexOfLastDog - dogsPerPage // 9-9=0 18-9=9 27-9=18 36-9=27 45-9=36...
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
 
-    const temperaments = useSelector((state)=> state.Temperaments)
+    // const temperaments = useSelector((state)=> state.Temperaments)
 
     const paginado = (pageNumber)=>{
         setCurrentPage(pageNumber)
@@ -76,8 +76,8 @@ export default function Home(){
              
               return (
               <div className={s.margin}> <NavLink className={s.navlink} to={`/home/${el.id}`} > <DogCard  img={el.img ? el.img : "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"}
-                name={el.name} temperaments={!el.createInDb ? el.temperament : el.Temperaments.map(e=>e.name + " ")} key={el.id}/>
-                   </NavLink></div> )
+                name={el.name} temperaments={!el.createInDb ? el.temperament : el.Temperaments.map(e=>e.name + " ") }key={el.id} />
+                   </NavLink></div>  )
                 })}
                 </ul>
             

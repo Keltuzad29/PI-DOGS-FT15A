@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
     },
     img: {
       type:DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       defaultValue: "https://www.anipedia.net/imagenes/nombres-de-perros-800x375.jpg"
      },
     

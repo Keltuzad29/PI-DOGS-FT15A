@@ -10,3 +10,10 @@ text-align: center;
 text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px #e60073, 0 0 10px #e60073,
 0 0 10px #e60073, 0 0 20px #e60073, 0 0 30px #e60073;
 font-size: 2rem;}
+
+.navlink{
+    text-decoration: none;
+    color: black;
+    width: 300px;
+    cursor:url('../cursor_perrito_.png'), auto;
+}

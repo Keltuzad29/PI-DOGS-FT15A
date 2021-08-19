@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './DogCard.module.css'
+import s from '../styles/DogCard.module.css'
 
 
 export default function DogCard({name, img, temperaments}) {

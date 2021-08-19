@@ -3,7 +3,7 @@
 .dogImage{
     border-radius: 10px;
     background-image: url("https://sologifs.com/wp-content/uploads/2020/05/perro-saludando-a-todos.gif");
-  
+    cursor:url('../cursor_perrito.png'), auto; 
 }
 @media (max-width: 560px){
     .movieImage {  
@@ -16,12 +16,15 @@
     text-align: center;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px #e60073, 0 0 20px #e60073,
     0 0 10px #e60073, 0 0 20px #e60073, 0 0 30px #e60073;
-    font-size: 1.8rem;}
+    font-size: 1.8rem;
+    cursor:url('../cursor_perrito.png'), auto;
+}
 
 .temperament{
     word-spacing: 0.25em;
     text-align: center;
     text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 0.5px #e60073, 0 0 1px #e60073, 0 0 5px #e60073, 0 0 5px #e60073, 0 0 10px #E60373;
-    font-size: 1rem;}
+    font-size: 1rem;
+    cursor:url('../cursor_perrito.png'), auto;}
     
   

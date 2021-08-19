@@ -50,6 +50,7 @@ export function filterDogsByTemperaments(payload){
     }
 }
 
+//filtra los dogs entre los creados y los que estan vienen de la api
 export function filterCreated(payload) {
     return{
         type:"FILTER_CREATED",

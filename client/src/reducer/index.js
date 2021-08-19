@@ -97,24 +97,13 @@ function rootReducer(state = initialState, action) {
             state.dogs.sort(function (a, b){
               // let num1 = a.weight_metric.split(" - ");
               // let num2 = b.weight_metric.split(" - ");
-                if (a.weight_min > b.weight_min){
-                    return 1;
-                }
-                if (b.weight_min > a.weight_min){
-                    return -1;
-                }
-                return 0;
+
+                return b.weight_min - a.weight_min;
             }) :
             state.dogs.sort(function(a, b){
               // let num1 = a.weight_metric.split(" - ");
               // let num2 = b.weight_metric.split(" - ");
-                if (a.weight_min > b.weight_min){
-                    return -1;
-                }
-                if (b.weight_min > a.weight_min){
-                    return 1;
-                }
-                return 0;
+                return a.weight_min - b.weight_min;
             })
             return{
             ...state,
