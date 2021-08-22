@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../dog.png";
-import huella from '../huellitaNew.jpg'
+import huella from "../huellitaNew.jpg";
 import {
   getDogs,
   filterDogsByTemperaments,
@@ -26,8 +26,6 @@ export default function NavBar() {
 
   const temperaments = useSelector((state) => state.temperaments);
 
-
-
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperaments());
@@ -47,44 +45,71 @@ export default function NavBar() {
   }
 
   return (
-    <header className={s.navbar} >
-         <nav >
+    <header>
+      <nav className={s.navbar}>
         <ul className={s.list}>
           <li className={s.list_item}>
-      <NavLink className={s.home} exact to="/">
-          <img className={s.imgHome} id="logoDog" src={Logo} width="30" height="30" alt="" />
-      </NavLink>
-    <div className={s.inputs}>
-      <div className={s.filtros}><div><label className={s.label} htmlFor="select">Temperamentos</label>
-      <select className={s.select} onChange={(e) => handleFilterTemperament(e)}>
-        {temperaments.map((temp) => (
-          <option value={temp.name} key={temp.id}>
-            {temp.name}
-          </option>
-        ))}
-      </select></div>
+            <NavLink className={s.home} exact to="/">
+              <img
+                className={s.imgHome}
+                id="logoDog"
+                src={Logo}
+                width="30"
+                height="30"
+                alt=""
+              />
+            </NavLink>
+        <div className={s.t_f_s}>
 
-      <div><label className={s.label} htmlFor="select">Api VS DB</label>
-      <select className={s.select} onChange={(e) => handleFilterCreated(e)}>
-        <option value="All">Todos</option>
-        <option value="created">Creados</option>
-        <option value="api">Existente</option>
-      </select></div>
-      </div>
-      <button
-        className={s.boton}
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Volver a Cargar Todos los Perros
-      </button>
-      </div>
-      <h1 className={s.title}>MUNDO PERRUNO</h1>
-      <SearchBar />
-      <Link className={s.newdog} to="/dogs">
-       <img className={s.imgNew} src={huella} alt="img not found"></img>
-      </Link>  
+            <h1 className={s.title}>MUNDO PERRUNO</h1>
+            <div className={s.filtros_search}>
+            <div className={s.select_button}>
+              <div className={s.filtros}>
+                <div>
+                  <label className={s.label} htmlFor="select">
+                    Temperamentos
+                  </label>
+                  <select
+                    className={s.select}
+                    onChange={(e) => handleFilterTemperament(e)}
+                    >
+                    {temperaments.map((temp) => (
+                      <option value={temp.name} key={temp.id}>
+                        {temp.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className={s.label} htmlFor="select">
+                    Api VS DB
+                  </label>
+                  <select
+                    className={s.select}
+                    onChange={(e) => handleFilterCreated(e)}
+                  >
+                    <option value="All">Todos</option>
+                    <option value="created">Creados</option>
+                    <option value="api">Existente</option>
+                  </select>
+                </div>
+              </div>
+              <button
+                className={s.boton}
+                onClick={(e) => {
+                  handleClick(e);
+                }}
+                >
+                Volver a Cargar Todos los Perros
+              </button>
+              </div>
+           
+            <SearchBar />
+            </div>
+            </div>
+            <Link className={s.newdog} to="/dogs">
+              <img className={s.imgNew} src={huella} alt="img not found"></img>
+            </Link>
           </li>
         </ul>
       </nav>

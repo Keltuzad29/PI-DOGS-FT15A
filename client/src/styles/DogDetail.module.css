@@ -7,7 +7,7 @@
     border-radius: 15px;
     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 10px #e60073,
     0 0 10px #e60073, 0 0 10px #e60073, 0 0 10px #e60073;;
-    cursor:url('../cursor_perrito.png'), auto;
+   
 }
 .margin:hover {
     transform: scale(1.02);
@@ -97,5 +97,6 @@ margin-block-end: unset;
   
   .boton:hover{
     color: #3c3d15bb;
-    background-color: #f5e2a4;}
+    background-color: #f5e2a4;
+    cursor:url('../cursor_perrito_.png'), auto;}
   

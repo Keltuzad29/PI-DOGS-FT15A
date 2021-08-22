@@ -7,7 +7,7 @@ const initialState = {
 
 
 
-console.log("estado inicial", initialState.dogs);
+//console.log("estado inicial", initialState.dogs);
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DOGS":
@@ -68,7 +68,7 @@ function rootReducer(state = initialState, action) {
 
     case "ORDER_BY_NAME":
         let sortedArr = action.payload === 'asc' ? 
-        state.allDogs.sort(function (a, b){
+        state.dogs.sort(function (a, b){
             if (a.name > b.name){
                 return 1;
             }
@@ -77,7 +77,7 @@ function rootReducer(state = initialState, action) {
             }
             return 0;
         }) :
-        state.allDogs.sort(function(a, b){
+        state.dogs.sort(function(a, b){
             if (a.name > b.name){
                 return -1;
             }
@@ -97,7 +97,6 @@ function rootReducer(state = initialState, action) {
             state.dogs.sort(function (a, b){
               // let num1 = a.weight_metric.split(" - ");
               // let num2 = b.weight_metric.split(" - ");
-
                 return b.weight_min - a.weight_min;
             }) :
             state.dogs.sort(function(a, b){

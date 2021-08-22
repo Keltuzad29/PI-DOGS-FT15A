@@ -72,6 +72,7 @@ export default function Home(){
                 allDogs= {allDogs.length}
                 paginado= {paginado}
                 />
+            <div className={s.dogCards}>
                <ul className={s.dogsGrid}> {currentDogs?.map( el =>{
              
               return (
@@ -80,7 +81,7 @@ export default function Home(){
                    </NavLink></div>  )
                 })}
                 </ul>
-            
+            </div>
         </div>
     )
 }

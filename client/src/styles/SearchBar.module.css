@@ -3,7 +3,7 @@
     margin-right: 30px;
 }
 
-.select {
+.input {
     display: block;
     font-size: 10px;
     font-family: 'Verdana', sans-serif;
@@ -26,21 +26,26 @@
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
   }
-  .select::-ms-expand {
+  .input::-ms-expand {
     display: none;
   }
-  .select:hover {
+  .input:hover {
     border-color: #888;
+    cursor:url('../cursor_perrito_.png'), auto;
   }
-  .select:focus {
+  .input:focus {
     border-color: #aaa;
     box-shadow: 0 0 1px 3px #aa926c;
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: #222; 
     outline: none;
   }
-  .select option {
+  .input option {
     font-weight:normal;
+  }
+
+  @media (max-width: 560px){
+  
   }
 
   .boton{
@@ -57,5 +62,51 @@
   
   .boton:hover{
     color: #3c3d15bb;
-    background-color: #f5e2a4;}
+    background-color: #f5e2a4;
+    cursor:url('../cursor_perrito_.png'), auto;}
 
+    @media (max-width: 850px) {
+      .searchBar{
+        margin-left: 10px;
+        margin-right: 10px;
+    } 
+    } 
+
+    @media (max-width: 800px) {
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    } 
+    .input {
+      font-size: 9px;
+      width: 130px; 
+      margin: 5px;
+    }
+
+    .boton{
+      width: 130px;
+      font-size: 10px;
+    }
+    } 
+    
+    
+
+   
+    @media (max-width: 600px){
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+      
+      .boton{
+        width: 100px;
+        padding: 5px;
+        font-size: 10px;
+      }
+      .input {
+        font-size: 8px;
+        width: 100px; 
+        margin: 5px;
+      }  
+      
+      }
