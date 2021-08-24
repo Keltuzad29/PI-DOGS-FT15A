@@ -169,7 +169,7 @@ export default function DogCreate(){
                      {errors.height_max && (<p className= {s.danger} >{errors.height_max}</p>)}
                 </div>
                 <div>
-                    <label htmlFor="weight_min"> Peso *</label>
+                    <label htmlFor="weight_min">Peso *</label>
                     <br/>
                      <input className={s.input} autocomplete="off"  type="text" value={input.weight_min} name='weight_min' id='weight_min' placeholder="Min"  onChange={(e)=>handleChange(e)} />
                       Kgs
