@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert'; 
 
 export function getDogs() {
     return async function(dispatch) {
@@ -25,7 +26,7 @@ export function getNameDogs(name){
                 payload: dogsByName.data
             })
         }catch(error){
-            alert("El Nombre ingresado no existe en la base de datos, prueba otro o agrega uno nuevo")
+            swal("El Nombre ingresado no existe en la base de datos, prueba otro o agrega uno nuevo")
             console.log(error)
         }
 

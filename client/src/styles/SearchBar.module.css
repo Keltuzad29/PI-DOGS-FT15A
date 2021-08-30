@@ -63,7 +63,9 @@
   .boton:hover{
     color: #3c3d15bb;
     background-color: #f5e2a4;
-    cursor:url('../cursor_perrito_.png'), auto;}
+    cursor:url('../cursor_perrito_.png'), auto;
+    transform: scale(1.1);
+  }
 
     @media (max-width: 850px) {
       .searchBar{

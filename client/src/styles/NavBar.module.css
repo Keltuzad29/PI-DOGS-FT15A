@@ -144,6 +144,10 @@
   border-radius: 30px;
   cursor: url("../cursor_perrito_.png"), auto;
 }
+.imgNew:hover {
+  transform: scale(1.3);
+}
+
 .newdog {
   margin-left: 10px;
 }
@@ -158,6 +162,10 @@
   height: 80px;
   width: 80px;
   cursor: url("../cursor_perrito_.png"), auto;
+}
+
+.imgHome:hover {
+  transform: scale(1.3);
 }
 .home {
   margin-right: 10px;
@@ -187,6 +195,7 @@
   color: #3c3d15bb;
   background-color: #f5e2a4;
   cursor: url("../cursor_perrito_.png"), auto;
+  transform: scale(1.1)
 }
 
 @media (max-width: 850px) {
