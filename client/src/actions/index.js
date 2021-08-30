@@ -1,10 +1,12 @@
 import axios from 'axios';
 import swal from 'sweetalert'; 
 
+
+const ruta = "http://localhost:3001/";
 export function getDogs() {
     return async function(dispatch) {
       try {
-        var json = await axios.get("http://localhost:3001/dogs");
+        var json = await axios.get(`${ruta}dogs`);
         console.log(json)
         return dispatch({
             type: "GET_DOGS",
